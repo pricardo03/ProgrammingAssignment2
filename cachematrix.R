@@ -4,7 +4,9 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-# create the matrix
+#Tasks
+#1. create the matrix
+#2. fill the matrix
 
 }
 
