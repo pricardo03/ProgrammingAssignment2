@@ -2,10 +2,7 @@
 ## functions do
 ## Write a short comment describing this function
 
-# makeCacheMatrix is a process where will fill a matrix with values and have some
-# specifications like:
-# a. have to be a square matrix
-# b. values have to be numerics 
+# makeCacheMatrix is a process where will fill a matrix with values
 
 makeCacheMatrix <- function(x = matrix()) 
 {
