@@ -17,7 +17,9 @@ makeCacheMatrix <- function(x = matrix())
                 x <<- y
         }
         
-        #get <- function() x
+        get <- function() x
+        
+        get.inverse <- function() inv.cache
         
         ## Here we assign the value to the variable on top-level
         CachedMatrix <<- cacheSolve(x)
