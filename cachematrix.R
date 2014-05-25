@@ -2,13 +2,6 @@
 ## functions do
 ## Write a short comment describing this function
 
-# Spanish comment
-# makeCacheMatrix es un proceso mediante el cual voy a llenar con valores una matrix
-# que debe cumplir con los siguientes lineamientos:
-# a. debe ser cuadrada
-# b. debe contener valores numericos
-
-# english
 # makeCacheMatrix is a process where will fill a matrix with values and have some
 # specifications like:
 # a. have to be a square matrix
