@@ -29,8 +29,9 @@ cacheSolve <- function(x, ...)
 {
         ## Return a matrix that is the inverse of 'x'
         #1. Check if inverse of matrix "x" can be done
-        if(ncol(x)==nrow(x))            ##< this mean is a square matrix and can inverse
-                { return(solve(x)) }    ##< returning the result of inverse
+        #   and matrix is not null
+        if(ncol(x)==nrow(x) && !is.null(x))     ##< this mean is a square matrix and can inverse
+                { return(solve(x)) }            ##< returning the result of inverse
         else 
                 { print("This matrix can inverse!") } #this create a warning on compile but explain what's happens
 }
