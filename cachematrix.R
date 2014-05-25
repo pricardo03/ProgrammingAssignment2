@@ -9,7 +9,13 @@
 
 makeCacheMatrix <- function(x = matrix()) 
 {
-        #set <- function(y) {x <<- y}
+        #1 create empty var for the inverse matrix 
+        CachedMatrix <- NULL
+        
+        set <- function(y) 
+        {
+                x <<- y
+        }
         
         #get <- function() x
         
@@ -24,14 +30,19 @@ makeCacheMatrix <- function(x = matrix())
 ## this func() complete two steps
 ## 1. check if conversion is possible
 ## 2. if possible make a inverse and return to the caller
-
+## If the inverse has already been calculated 
 cacheSolve <- function(x, ...) 
 {
         ## Return a matrix that is the inverse of 'x'
+        
+        # Try to get the inverse matrix from cache
+        inverse <- x$get.inverse()  
+
         #1. Check if inverse of matrix "x" can be done
         #   and matrix is not null
-        if(ncol(x)==nrow(x) && !is.null(x))     ##< this mean is a square matrix and can inverse
-                { return(solve(x)) }            ##< returning the result of inverse
+        if(ncol(x)==nrow(x) && !is.null(x)              ##< only square matrix can be done 
+           && !identical(CachedMatrix, x))              ##< If the inverse has not already been calculated 
+                { return(solve(x)) }                    ##< returning the result of inverse
         else 
                 { print("This matrix can inverse!") } #this create a warning on compile but explain what's happens
 }
