@@ -7,48 +7,40 @@
 # a. have to be a square matrix
 # b. values have to be numerics 
 
+makeCacheMatrix <- function(x = matrix()) 
+{
+	CacheForInverse <- NULL			#empty var
+    
+	set <- function(y) 			#setting the matrix
+    	{
+        	x <<- y
+		CacheForInverse <<- NULL
+    	}
 
-makeCacheMatrix <- function(x = matrix()) {
-    CacheForInverse <- NULL
-    #Inv.cache <- NULL
+    	get <- function() x			#get values from matrix
+	
+    	SetInverse <- function(i) CacheForInverse <<- i	#setting results
+    	GetInverse <- function() CacheForInverse 	#getting the inverse values
 
-    set <- function(y) {
-        # `<<-` sets the values of x and inv.cache in makeCacheMatrix's
-        # environment and not this function
-        x <<- y
-	CacheForInverse <<- NULL
-#        inv.cache <<- NULL
-    }
-
-    get <- function() x
-
-    SetInverse <- function(i) CacheForInverse <<- i
-    GetInverse <- function() CacheForInverse 
-
-#    set.inverse <- function(i) inv.cache <<- i
-#    get.inverse <- function() inv.cache
-   
-    return (list(set = set, get = get, SetInverse = SetInverse, GetInverse = GetInverse))
+    	return (list(set = set, get = get, SetInverse = SetInverse, GetInverse = GetInverse))
 
 }
 
-
-cacheSolve <- function(x, ...) {
-    # Try make inverse from cache
-    inverse <- x$get.inverse()   
+# this Fucntion make the magic making the inverse for the matrix
+cacheSolve <- function(x, ...) 
+{
+    	# Try make inverse from cache
+    	BuilInverse <- x$GetInverse()   
     
-    # now check if the inverse exists
-	if(!is.null(inverse)) 
-	{
-		message("getting cached data")
-        	return(inverse)
-    	} 
+    	# now check if the inverse exists
+	if(!is.null(BuilInverse)) 
+		{ message("getting cached data") } 	#a message and return at the end
 	else 
 	{
-        Data <- x$get()
-        inverse <- solve(Data, ...)
-        x$set.inverse(inverse)
-        
-        return(inverse)
+        	Data <- x$get()				#get the matrix
+        	BuilInverse <- solve(Data)		#inverse the matrix
+        	x$SetInverse(BuilInverse)		#and set new value in the matrix 
 	}
+	
+	return(BuilInverse)	##Whatever is the flow always return the Inverse
 }
