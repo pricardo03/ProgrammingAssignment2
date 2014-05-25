@@ -9,19 +9,19 @@
 
 makeCacheMatrix <- function(x = matrix()) 
 {
-        set <- function(y) {x <<- y}
+        #set <- function(y) {x <<- y}
         
-        get <- function() x
+        #get <- function() x
         
         ## Here we assign the value to the variable on top-level
         CachedMatrix <<- cacheSolve(x)
         
-        list(set = set, get = get)
+        #list(set = set, get = get)
 }
 
 
 ## Write a short comment describing this function
-## this func() complete to steps
+## this func() complete two steps
 ## 1. check if conversion is possible
 ## 2. if possible make a inverse and return to the caller
 
