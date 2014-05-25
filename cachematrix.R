@@ -7,11 +7,16 @@
 # a. have to be a square matrix
 # b. values have to be numerics 
 
-makeCacheMatrix <- function(x = matrix()) {
-
-
-
-
+makeCacheMatrix <- function(x = matrix()) 
+{
+        set <- function(y) {x <<- y}
+        
+        get <- function() x
+        
+        ## Here we assign the value to the variable on top-level
+        CachedMatrix <<- cacheSolve(x)
+        
+        list(set = set, get = get)
 }
 
 
@@ -20,7 +25,8 @@ makeCacheMatrix <- function(x = matrix()) {
 ## 1. check if conversion is possible
 ## 2. if possible make a inverse and return to the caller
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x, ...) 
+{
         ## Return a matrix that is the inverse of 'x'
         #1. Check if inverse of matrix "x" can be done
         if(ncol(x)==nrow(x))            ##< this mean is a square matrix and can inverse
